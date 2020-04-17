@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FE4AAAA244A24930066444D /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE4AAA9244A24930066444D /* libndi_ios.a */; };
 		B3E7B58A1CC2AC0600A0062D /* NdiWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* NdiWrapper.m */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0FE4AAA7244A24790066444D /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = NdiSDK_4_5/include; sourceTree = "<group>"; };
+		0FE4AAA9244A24930066444D /* libndi_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libndi_ios.a; path = NdiSDK_4_5/lib/iOS/libndi_ios.a; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libNdiWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNdiWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5881CC2AC0600A0062D /* NdiWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NdiWrapper.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* NdiWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NdiWrapper.m; sourceTree = "<group>"; };
@@ -33,12 +36,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE4AAAA244A24930066444D /* libndi_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FE4AAA8244A24930066444D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FE4AAA9244A24930066444D /* libndi_ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -50,9 +62,11 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				0FE4AAA7244A24790066444D /* include */,
 				B3E7B5881CC2AC0600A0062D /* NdiWrapper.h */,
 				B3E7B5891CC2AC0600A0062D /* NdiWrapper.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				0FE4AAA8244A24930066444D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +109,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -216,13 +231,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
+					"$(PROJECT_DIR)/NdiSDK_4_5/include",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NdiSDK_4_5/lib/iOS",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = NdiWrapper;
 				SKIP_INSTALL = YES;
 			};
@@ -236,9 +259,17 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
+					"$(PROJECT_DIR)/NdiSDK_4_5/include",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NdiSDK_4_5/lib/iOS",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = NdiWrapper;
 				SKIP_INSTALL = YES;
 			};
