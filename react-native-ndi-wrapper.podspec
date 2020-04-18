@@ -18,11 +18,19 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "9.0" }
   s.source       = { :git => "https://github.com/bharatbiswal/react-native-ndi-wrapper.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m,swift,a}"
+  s.source_files = "ios/*.{h,m,swift}", "ios/NdiSDK_4_5/include/*.{h,m,swift}", "ios/NdiSDK_4_5/lib/iOS/*.{a}"
+  s.preserve_paths = 'ios/NdiSDK_4_5/include/*.h',  'ios/NdiSDK_4_5/lib/iOS/*.a'
+  s.vendored_libraries = 'ios/NdiSDK_4_5/lib/iOS/libndi_ios.a'
+  s.libraries = 'ndi_ios'
+  s.ios.user_target_xcconfig = { 
+    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/react-native-ndi-wrapper/ios/NdiSDK_4_5/include/**"',
+    'LIBRARY_SEARCH_PATHS' => '"${PODS_ROOT}/react-native-ndi-wrapper/ios/NdiSDK_4_5/lib/iOS/**"'
+  }
   s.requires_arc = true
 
   s.dependency "React"
   s.dependency 'AFNetworking', '~> 3.0'
   # s.dependency "..."
+
 end
 

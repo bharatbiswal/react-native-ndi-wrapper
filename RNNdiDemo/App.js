@@ -24,6 +24,20 @@ export default class App extends Component<{}> {
         message
       });
     });
+
+    console.log('Calling findSources');
+    NdiWrapper.findSources()
+    .then((sources) => {
+      console.log('findSources returned');
+      console.log(sources);
+    })
+    .catch((err) => {
+      console.log('findSources errored');
+      console.log(err);
+    });
+    console.log('Called findSources');
+    console.log('Returning render');
+
   }
   render() {
     return (
