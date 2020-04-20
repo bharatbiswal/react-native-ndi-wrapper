@@ -19,3 +19,19 @@ This is 622 MB, thats why I did not push to Github
 4. Install pods bu running "pod install"
 5. Come back to RNNdiDemo folder and run "react-native run-ios"
 
+It will launch the following screen 'First Page'
+
+<img src="RNNdiDemo/images/demo1.jpg" height="800"/>
+
+6. Tap on the 'Find Senders' button to start scan the LAN for senders
+
+<img src="RNNdiDemo/images/demo2.jpg" height="800"/>
+
+7. On scan complete (default 3000 milli seconds), the detected senders are shown in the list as follows 
+
+<img src="RNNdiDemo/images/demo3.jpg" height="800"/>
+
+
+
+
+
