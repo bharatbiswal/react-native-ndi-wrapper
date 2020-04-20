@@ -7,16 +7,16 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
-{
-	AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-	manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-	[manager GET:@"https://httpstat.us/200" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-			callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@ resp: %@", numberArgument, stringArgument, responseObject]]);
-	} failure:^(NSURLSessionTask *operation, NSError *error) {
-			callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@ err: %@", numberArgument, stringArgument, error]]);
-	}];
-}
+// RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
+// {
+// 	AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+// 	manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+// 	[manager GET:@"https://httpstat.us/200" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+// 			callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@ resp: %@", numberArgument, stringArgument, responseObject]]);
+// 	} failure:^(NSURLSessionTask *operation, NSError *error) {
+// 			callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@ err: %@", numberArgument, stringArgument, error]]);
+// 	}];
+// }
 
 RCT_REMAP_METHOD(findSources,
                  findSourcesWithResolver:(RCTPromiseResolveBlock)resolve
@@ -56,11 +56,11 @@ RCT_REMAP_METHOD(findSources,
   
   NSLog(@"%@",sources);
   if (sources) {
-      if ([sources count] < 1) {
-          // Sample test data
-          [sources addObject:@{ @"p_ndi_name" : @"Test Name 1", @"p_ip_address" : @"128.11.234.12" }];
-          [sources addObject:@{ @"p_ndi_name" : @"Test Name 2", @"p_url_address" : @"ndi://128.11.234.18" }];
-      }
+      // if ([sources count] < 1) {
+      //     // Sample test data
+      //     [sources addObject:@{ @"p_ndi_name" : @"Test Name 1", @"p_ip_address" : @"128.11.234.12" }];
+      //     [sources addObject:@{ @"p_ndi_name" : @"Test Name 2", @"p_url_address" : @"ndi://128.11.234.18" }];
+      // }
     resolve(sources);
   } else {
     NSError *error = [NSError errorWithDomain:@"NdiSDKManager" code:400 userInfo:nil];

@@ -9,63 +9,18 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import NdiWrapper from 'react-native-ndi-wrapper';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator} from 'react-navigation-stack';
 
-export default class App extends Component<{}> {
-  state = {
-    status: 'starting',
-    message: '--'
-  };
-  componentDidMount() {
-    NdiWrapper.sampleMethod('Testing', 123, (message) => {
-      this.setState({
-        status: 'native callback received',
-        message
-      });
-    });
-
-    console.log('Calling findSources');
-    NdiWrapper.findSources()
-    .then((sources) => {
-      console.log('findSources returned');
-      console.log(sources);
-    })
-    .catch((err) => {
-      console.log('findSources errored');
-      console.log(err);
-    });
-    console.log('Called findSources');
-    console.log('Returning render');
-
+import FirstScreen from './components/FirstScreen';
+import SecondScreen from './components/SecondScreen';
+//import all the screens we are going to switch 
+const App = createStackNavigator({
+    FirstScreen: { screen: FirstScreen }, 
+    SecondScreen: { screen: SecondScreen }, 
+  },
+  {
+    initialRouteName: 'FirstScreen',
   }
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>☆NdiWrapper example☆</Text>
-        <Text style={styles.instructions}>STATUS: {this.state.status}</Text>
-        <Text style={styles.welcome}>☆NATIVE CALLBACK MESSAGE☆</Text>
-        <Text style={styles.instructions}>{this.state.message}</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+);
+export default createAppContainer(App);
